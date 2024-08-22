@@ -153,7 +153,7 @@ export function EmployeeDashboard() {
 
   return (
     <div className="flex flex-col bg-gray-100  ">
-      {/* <PhotoCapture /> */}
+      <PhotoCapture />
       {isMobile ? <MobileNav /> : <aside
         className="bg-gradient-to-br from-gray-800 to-gray-900 -translate-x-80 fixed inset-0 z-50  ml-4 h-[calc(95vh-32px)] w-72 rounded-xl transition-transform duration-300 xl:translate-x-0"
         style={{ marginTop: "4.5rem" }}
