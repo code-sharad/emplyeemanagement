@@ -37,11 +37,12 @@ function Navbar({ userType, setUserType }) {
         "Content-Type": "application/json",
       },
       withCredentials: true,
+      data: localStorage.getItem("employeeDashboardTimer") ,
     };
 
     const response = await axios.post(
       "http://localhost:5200/api/v1/user/logout",
-      config
+      config,
     );
 
     console.log(response);
