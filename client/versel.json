@@ -1,0 +1,29 @@
+{
+    "rewrites":[
+        {
+            "source":"/",
+            "destination":"/"
+        },
+        {
+            "source":"/adminlogin",
+            "destination":"/"
+        },
+        {
+            "source":"/home",
+            "destination":"/"
+        },{
+            "source":"/forgot-password",
+            "destination":"/"
+        },{
+           "source":"/emp-dashboard",
+           "destination":"/" 
+        },{
+            "source":"/support",
+            "destination":"/"
+        },{
+            "source":"/(.*)",
+            "destination":"/"
+        }       
+
+    ]
+}
