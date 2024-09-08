@@ -1,6 +1,6 @@
-import { app } from "./app.js";
-import connectDB from "./db/db.js";
-import { PORT } from "./constant.js";
+import { app } from "./src/app.js";
+import connectDB from "./src/db/db.js";
+import { PORT } from "./src/constant.js";
 
 const main = async(port) => {
     try {
