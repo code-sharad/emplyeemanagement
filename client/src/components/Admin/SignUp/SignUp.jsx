@@ -1,9 +1,8 @@
-
 import axios from "axios";
-import  { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
-function SignUp({setLoginType}) {
+function SignUp({ setLoginType }) {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
@@ -11,10 +10,9 @@ function SignUp({setLoginType}) {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
 
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
-  const handleSubmit = async(e) => {
-
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     if (password !== confirmPassword) {
@@ -29,16 +27,20 @@ function SignUp({setLoginType}) {
       phoneNumber: phoneNumber,
       password: password,
       confirmPassword,
-      Role: "admin"
-    }
+      Role: "admin",
+    };
 
     const config = {
       headers: {
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json",
       },
-    }
+    };
 
-    const response = await axios.post('http://localhost:5200/api/v1/admin/registerAdmin', body, config);
+    const response = await axios.post(
+      "https://emplyeemanagement-nvmn.onrender.com/api/v1/admin/registerAdmin",
+      body,
+      config
+    );
 
     console.log(response);
 
@@ -49,20 +51,16 @@ function SignUp({setLoginType}) {
     if (data.success === true) {
       alert("Admin Successfully registered! Please login to continue");
       setLoginType("admin");
-      navigate("/adminlogin")
-
+      navigate("/adminlogin");
     }
-    
   };
 
   return (
     <div className="flex py-20 items-center justify-center min-h-screen bg-gray-100 bg-gradient-to-r from-blue-400 to-purple-400">
       <div className="w-full max-w-md p-8 bg-white rounded-lg shadow-2xl border border-gray-300">
-        
         <h1 className="text-3xl font-bold text-center mb-6">Admin Sign Up</h1>
 
         <form onSubmit={handleSubmit}>
-
           {/** firstName input field  */}
           <div className="mb-4">
             <label className="block text-gray-700"> First Name:</label>
@@ -87,9 +85,8 @@ function SignUp({setLoginType}) {
             />
           </div>
 
+          {/** Email input field  */}
 
-           {/** Email input field  */}
-            
           <div className="mb-4">
             <label className="block text-gray-700">Email:</label>
             <input
@@ -112,7 +109,6 @@ function SignUp({setLoginType}) {
               className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
             />
           </div>
-
 
           {/** Password input field  */}
           <div className="mb-4">
@@ -148,13 +144,17 @@ function SignUp({setLoginType}) {
 
           {/** Link to login page */}
           <div className="mt-4 text-center">
-            <p className="text-gray-700">Already have an account? <a href="/adminlogin" className="text-blue-500 hover:underline">Login here</a></p>
+            <p className="text-gray-700">
+              Already have an account?{" "}
+              <a href="/adminlogin" className="text-blue-500 hover:underline">
+                Login here
+              </a>
+            </p>
           </div>
-          
         </form>
       </div>
     </div>
   );
 }
 
-export  {SignUp};
+export { SignUp };

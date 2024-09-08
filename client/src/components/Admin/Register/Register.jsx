@@ -10,24 +10,23 @@ function Register() {
   const [phoneNumber, setPhoneNumber] = useState("");
   const [password, setPassword] = useState("");
   const [role, setRole] = useState("");
-  
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-  
+
     console.log(firstName, lastName, email, phoneNumber, password);
-  
+
     const config = {
       headers: {
         "Content-Type": "application/json",
       },
     };
-  
+
     if (phoneNumber.length < 10) {
       alert("Invalid Phone Number");
       return;
     }
-  
+
     const body = JSON.stringify({
       firstName: firstName,
       lastName: lastName,
@@ -36,25 +35,24 @@ function Register() {
       password: password,
       role: "role",
     });
-  
+
     try {
       const response = await axios.post(
-        "http://localhost:5200/api/v1/admin/registerUser",
+        "https://emplyeemanagement-nvmn.onrender.com/api/v1/admin/registerUser",
         body,
         config
       );
-  
+
       console.log("respppppppp", response);
       const data = response.data;
-      console.log("data of employee while registering emp received from backend", data);
-  
-    
-  
+      console.log(
+        "data of employee while registering emp received from backend",
+        data
+      );
+
       if (data.success === true) {
         toast.success("Employee Successfully registered!");
       }
-
-
     } catch (error) {
       console.error("Error registering user:", error);
       toast.error("Failed to register employee. Please try again.");

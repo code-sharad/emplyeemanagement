@@ -1,25 +1,20 @@
-import React from 'react'
-import ReactDOM from 'react-dom/client'
-import App from './App.jsx'
-import './index.css'
-
-
+import React from "react";
+import ReactDOM from "react-dom/client";
+import App from "./App.jsx";
+import "./index.css";
 
 // this code is the localhost url
-import axios from 'axios'
-import { ThemeProvider } from '@emotion/react'
-axios.defaults.baseURL = 'http://localhost:5200/api/v1/'
-axios.defaults.withCredentials = true  // for gaingin access-control-allow-credentials
+import axios from "axios";
+import { ThemeProvider } from "@emotion/react";
+axios.defaults.baseURL = "https://emplyeemanagement-nvmn.onrender.com/api/v1/";
+axios.defaults.withCredentials = true; // for gaingin access-control-allow-credentials
 
-
-ReactDOM.createRoot(document.getElementById('root')).render(
+ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     {/* <ThemeProvider> */}
     <div className="min-h-screen ">
       <App />
     </div>
     {/* </ThemeProvider> */}
-
   </React.StrictMode>
-)
-
+);

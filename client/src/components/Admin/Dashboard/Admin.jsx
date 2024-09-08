@@ -1,24 +1,20 @@
-import { useEffect, useState } from 'react'
-import Footer from '../Footer/Footer';
-import Sidebar from '../Sidebar/Sidebar';
+import { useEffect, useState } from "react";
+import Footer from "../Footer/Footer";
+import Sidebar from "../Sidebar/Sidebar";
 
+import Notifications from "../../../views/Notifications/Notifications";
+import Report from "../../../views/Report/Report";
 
-
-import Notifications from '../../../views/Notifications/Notifications';
-import Report from '../../../views/Report/Report';
-
-import axios from 'axios';
-import AdminProfiles from '../AdminProfile/AdminProfiles';
-import { toast } from 'sonner';
-import LeaveStatus from '../LeaveStatus/LeaveStatus';
-import Announcement from '../../../views/Announcement/Announcement';
-import History from '../../../views/History/History';
-import Manage from '../Manage/Manage';
-
-
+import axios from "axios";
+import AdminProfiles from "../AdminProfile/AdminProfiles";
+import { toast } from "sonner";
+import LeaveStatus from "../LeaveStatus/LeaveStatus";
+import Announcement from "../../../views/Announcement/Announcement";
+import History from "../../../views/History/History";
+import Manage from "../Manage/Manage";
 
 function Admin() {
-  const theme = localStorage.getItem('theme');
+  const theme = localStorage.getItem("theme");
   const [activeBox, setActiveBox] = useState("");
   const [totalEmployee, setTotalEmployee] = useState(0);
   const [leaveRequest, setLeaveRequest] = useState(0);
@@ -29,133 +25,107 @@ function Admin() {
   const [activeUsers, setActiveUsers] = useState(0);
 
   const getEmployee = async () => {
-
-
     const config = {
       headers: {
         "Content-Type": "multipart/form-data",
       },
 
-      withCredentials: true
+      withCredentials: true,
     };
 
-
     try {
-
-      const response = await axios("http://localhost:5200/api/v1/admin/getUsers", config);
+      const response = await axios(
+        "https://emplyeemanagement-nvmn.onrender.com/api/v1/admin/getUsers",
+        config
+      );
 
       const data = response.data;
 
-      // set the total emplyees 
+      // set the total emplyees
       setTotalEmployee(data.data.length);
 
       console.log(data.data);
 
-
       const info = data.data;
 
-
-
       info.map((e) => {
-
         if (e.isActive) {
           count++;
         }
-
-      })
+      });
 
       setActiveUsers(count);
-
-
-
-
-
-    }
-    catch (error) {
+    } catch (error) {
       console.log(error);
     }
-
-  }
+  };
 
   const getLeaveRequest = async () => {
-
     const config = {
       headers: {
         "Content-Type": "multipart/form-data",
       },
 
-      withCredentials: true
+      withCredentials: true,
     };
 
     try {
-
-      const response = await axios.get("http://localhost:5200/api/v1/admin/getLeaveEmployee", config)
+      const response = await axios.get(
+        "https://emplyeemanagement-nvmn.onrender.com/api/v1/admin/getLeaveEmployee",
+        config
+      );
 
       console.log(response.data);
 
       const data = response.data;
 
-
       const check = data.data;
-
 
       let approved = 0;
       let request = 0;
 
       await check.map((e) => {
-
         if (e.leaveStatus === "approved") {
           approved++;
         }
-      })
+      });
       await check.map((e) => {
-
         if (e.leaveStatus === "pending") {
           request++;
         }
-      })
+      });
 
       setLeaveRequest(request);
 
       setAcceptLeave(approved);
-
-
-
-    }
-    catch (error) {
+    } catch (error) {
       console.log(error);
       toast.error("Error");
     }
-
-  }
-
+  };
 
   useEffect(() => {
     getEmployee();
-
-
-  })
+  });
 
   useEffect(() => {
     getLeaveRequest();
-  }, [leaveRequest])
-
+  }, [leaveRequest]);
 
   return (
-
-    <div className={`${theme === 'dark' ? 'bg-gray-900 border-gray-700' : 'bg-gray-50 border-gray-200'} min-h-screen  dark:bg-black from-slate-100 to-slate-600 bg-gray-50/50`}>
-
-
+    <div
+      className={`${
+        theme === "dark"
+          ? "bg-gray-900 border-gray-700"
+          : "bg-gray-50 border-gray-200"
+      } min-h-screen  dark:bg-black from-slate-100 to-slate-600 bg-gray-50/50`}
+    >
       <div className="p-4 xl:ml-80">
-
         <Sidebar activeBox={activeBox} setActiveBox={setActiveBox} />
 
         <div className="mt-12">
-
           <div className="mb-12 grid gap-y-10 gap-x-6 md:grid-cols-2 xl:grid-cols-4">
-
-
-            { /* total Employee block */}
+            {/* total Employee block */}
 
             <div className="relative dark:bg-gray-900 dark:text-white flex flex-col bg-clip-border rounded-xl bg-white text-gray-700 shadow-md">
               <div className="bg-clip-border mx-4 rounded-xl overflow-hidden bg-gradient-to-tr from-blue-600 to-blue-400 text-white shadow-blue-500/40 shadow-lg absolute -mt-4 grid h-16 w-16 place-items-center">
@@ -187,14 +157,13 @@ function Admin() {
 
               <div className="border-t border-blue-gray-50 p-4">
                 <p className="block antialiased font-sans text-base leading-relaxed font-normal text-blue-gray-600">
-                  <strong className="text-green-500">+10%</strong>  grow the working
+                  <strong className="text-green-500">+10%</strong> grow the
+                  working
                 </p>
               </div>
-
-
             </div>
 
-            { /* active Employees */}
+            {/* active Employees */}
 
             <div className="relative dark:bg-gray-900 dark:text-white flex flex-col bg-clip-border rounded-xl bg-white text-gray-700 shadow-md">
               <div className="bg-clip-border mx-4 rounded-xl overflow-hidden bg-gradient-to-tr from-pink-600 to-pink-400 text-white shadow-pink-500/40 shadow-lg absolute -mt-4 grid h-16 w-16 place-items-center">
@@ -222,15 +191,17 @@ function Admin() {
               </div>
               <div className="border-t border-blue-gray-50 p-4">
                 <p className="block antialiased font-sans text-base leading-relaxed font-normal text-blue-gray-600">
-                  <strong className="text-green-500">+3%</strong> grow the Active Network
+                  <strong className="text-green-500">+3%</strong> grow the
+                  Active Network
                 </p>
               </div>
             </div>
 
-            { /* Leave request Employees */}
+            {/* Leave request Employees */}
 
             <div className="relative dark:bg-gray-900 dark:text-white flex flex-col bg-clip-border rounded-xl bg-white text-gray-700 shadow-md">
-              <div className="bg-clip-border mx-4 rounded-xl overflow-hidden bg-gradient-to-tr from-green-600 to-green-400 text-white shadow-green-500/40 shadow-lg absolute -mt-4 grid h-16 w-16 place-items-center"
+              <div
+                className="bg-clip-border mx-4 rounded-xl overflow-hidden bg-gradient-to-tr from-green-600 to-green-400 text-white shadow-green-500/40 shadow-lg absolute -mt-4 grid h-16 w-16 place-items-center"
                 onClick={() => setActiveBox("leave")}
               >
                 <svg
@@ -253,12 +224,13 @@ function Admin() {
               </div>
               <div className="border-t border-blue-gray-50 p-4">
                 <p className="block antialiased font-sans text-base leading-relaxed font-normal text-blue-gray-600">
-                  <strong className="text-red-500">-2%</strong>&nbsp;than yesterday
+                  <strong className="text-red-500">-2%</strong>&nbsp;than
+                  yesterday
                 </p>
               </div>
             </div>
 
-            { /** the leave employees */}
+            {/** the leave employees */}
             <div className="relative dark:bg-gray-900 dark:text-white flex flex-col bg-clip-border rounded-xl bg-white text-gray-700 shadow-md">
               <div className="bg-clip-border mx-4 rounded-xl overflow-hidden bg-gradient-to-tr from-orange-600 to-orange-400 text-white shadow-orange-500/40 shadow-lg absolute -mt-4 grid h-16 w-16 place-items-center">
                 <svg
@@ -281,15 +253,14 @@ function Admin() {
               </div>
               <div className="border-t border-blue-gray-50 p-4">
                 <p className="block antialiased font-sans text-base leading-relaxed font-normal text-blue-gray-600">
-                  <strong className="text-green-500"> </strong> &nbsp; Urgent leaving applications
+                  <strong className="text-green-500"> </strong> &nbsp; Urgent
+                  leaving applications
                 </p>
               </div>
             </div>
-
           </div>
 
           <div>
-
             {activeBox === "profile" && <AdminProfiles />}
 
             {activeBox === "manage" && <Manage className="my-16" />}
@@ -301,21 +272,11 @@ function Admin() {
             {activeBox === "leave" && <LeaveStatus />}
             {activeBox === "announcement" && <Announcement />}
             {activeBox === "history" && <History />}
-
-
-
           </div>
-
         </div>
-
-
-
-
       </div>
     </div>
-
-  )
+  );
 }
 
-
-export default Admin
+export default Admin;

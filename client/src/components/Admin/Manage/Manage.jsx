@@ -1,4 +1,3 @@
-
 import { toast, Toaster } from "sonner";
 import { lazy, startTransition, useEffect, useRef, useState } from "react";
 import Register from "../Register/Register";
@@ -6,7 +5,7 @@ import "./manage.css";
 import axios from "axios";
 
 // Lazy load the EmployeeDetails component
-const EmployeeDetails = lazy(() => import('../EmployeeDetails'));
+const EmployeeDetails = lazy(() => import("../EmployeeDetails"));
 
 function Manage() {
   const dialogRef = useRef();
@@ -20,7 +19,10 @@ function Manage() {
       withCredentials: true,
     };
 
-    const response = await axios.get("http://localhost:5200/api/v1/admin/getUsers", config);
+    const response = await axios.get(
+      "https://emplyeemanagement-nvmn.onrender.com/api/v1/admin/getUsers",
+      config
+    );
     const data = response.data.data;
     setDetail(data);
   };
@@ -38,8 +40,17 @@ function Manage() {
       >
         Add Employee
       </button>
-      <dialog ref={dialogRef} autoFocus className="transition-all rounded-lg p-3 min-w-[80vw] max-w-[90vw] w-full bg-gray-800 text-white">
-        <button className="absolute right-2 top-1 hover:font-bold" onClick={() => dialogRef.current.close()}>Close</button>
+      <dialog
+        ref={dialogRef}
+        autoFocus
+        className="transition-all rounded-lg p-3 min-w-[80vw] max-w-[90vw] w-full bg-gray-800 text-white"
+      >
+        <button
+          className="absolute right-2 top-1 hover:font-bold"
+          onClick={() => dialogRef.current.close()}
+        >
+          Close
+        </button>
         <Register />
       </dialog>
       <br />
@@ -74,7 +85,7 @@ function ShowTableData({ DataObject }) {
   const deleteEmployee = async (email) => {
     const config = {
       headers: {
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json",
       },
       withCredentials: true,
     };
@@ -82,7 +93,11 @@ function ShowTableData({ DataObject }) {
     const body = { email };
 
     try {
-      const response = await axios.delete("http://localhost:5200/api/v1/admin/deleteUser", { data: body }, config);
+      const response = await axios.delete(
+        "https://emplyeemanagement-nvmn.onrender.com/api/v1/admin/deleteUser",
+        { data: body },
+        config
+      );
 
       if (response.data.success) {
         toast.success("Employee Deleted Successfully");
@@ -110,7 +125,10 @@ function ShowTableData({ DataObject }) {
   return (
     <div className="text-white">
       {DataObject.map((data, i) => (
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 p-4 my-2 border-b border-gray-700 flex flex-col sm:flex-row bg-gray-900" key={i}>
+        <div
+          className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 p-4 my-2 border-b border-gray-700 flex flex-col sm:flex-row bg-gray-900"
+          key={i}
+        >
           <div className="md:hidden font-bold">First Name</div>
           <h2 className="truncate">{data.firstName}</h2>
           <div className="md:hidden font-bold">Last Name</div>
@@ -133,7 +151,18 @@ function ShowTableData({ DataObject }) {
               }}
               className="hover:bg-gray-200 dark:hover:bg-gray-700 p-2 rounded-xl transition duration-300 ease-in-out hover:text-black"
             >
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-ellipsis-vertical">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                className="lucide lucide-ellipsis-vertical"
+              >
                 <circle cx="12" cy="12" r="1" />
                 <circle cx="12" cy="5" r="1" />
                 <circle cx="12" cy="19" r="1" />
@@ -143,17 +172,28 @@ function ShowTableData({ DataObject }) {
 
           {selectedEmployee && selectedEmployee._id === data._id && (
             <dialog open={true} className="relative z-10 -translate-y-96">
-              <EmployeeDetails details={selectedEmployee} empRef={deleteEmployeeRef} />
-              <button onClick={() => {
-                startTransition(() => {
-                  setSelectedEmployee(null);
-                });
-              }} className="text-white absolute top-3 right-6">Close</button>
+              <EmployeeDetails
+                details={selectedEmployee}
+                empRef={deleteEmployeeRef}
+              />
+              <button
+                onClick={() => {
+                  startTransition(() => {
+                    setSelectedEmployee(null);
+                  });
+                }}
+                className="text-white absolute top-3 right-6"
+              >
+                Close
+              </button>
             </dialog>
           )}
         </div>
       ))}
-      <dialog ref={deleteEmployeeRef} className="relative z-10 p-5 rounded-lg bg-gray-800 text-white">
+      <dialog
+        ref={deleteEmployeeRef}
+        className="relative z-10 p-5 rounded-lg bg-gray-800 text-white"
+      >
         <h2 className="text-lg font-bold mb-4">Confirm Delete</h2>
         <p>Enter the employee's email to confirm deletion:</p>
         <input
@@ -163,8 +203,18 @@ function ShowTableData({ DataObject }) {
           className="border p-2 rounded w-full mb-4 bg-gray-700 text-white"
         />
         <div className="flex justify-end">
-          <button onClick={confirmDelete} className="bg-red-600 text-white px-4 py-2 rounded mr-2">Confirm</button>
-          <button onClick={() => deleteEmployeeRef.current.close()} className="bg-gray-600 px-4 py-2 rounded">Cancel</button>
+          <button
+            onClick={confirmDelete}
+            className="bg-red-600 text-white px-4 py-2 rounded mr-2"
+          >
+            Confirm
+          </button>
+          <button
+            onClick={() => deleteEmployeeRef.current.close()}
+            className="bg-gray-600 px-4 py-2 rounded"
+          >
+            Cancel
+          </button>
         </div>
       </dialog>
     </div>

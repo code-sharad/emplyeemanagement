@@ -51,7 +51,7 @@ export function EmployeeDashboard() {
   useEffect(() => {
     // const storedTimer = localStorage.getItem("employeeDashboardTimer");
     const storedTimer = axios
-      .get("http://localhost:5200/api/v1/user/status")
+      .get("https://emplyeemanagement-nvmn.onrender.com/api/v1/user/status")
       .then((res) => {
         console.log("status", res.data);
         setTimer(res.data.data[0].remainingTime);
@@ -87,7 +87,7 @@ export function EmployeeDashboard() {
   const fetchAnnouncements = async () => {
     try {
       const response = await axios.post(
-        "http://localhost:5200/api/v1/admin/getAnnouncements"
+        "https://emplyeemanagement-nvmn.onrender.com/api/v1/admin/getAnnouncements"
       );
       console.log("Fetched Announcements", response.data);
 
@@ -114,7 +114,7 @@ export function EmployeeDashboard() {
 
     try {
       const response = await axios.get(
-        "http://localhost:5200/api/v1/user/getUserProfile",
+        "https://emplyeemanagement-nvmn.onrender.com/api/v1/user/getUserProfile",
         config
       );
       const data = response.data;

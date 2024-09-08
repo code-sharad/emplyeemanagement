@@ -37,12 +37,12 @@ function Navbar({ userType, setUserType }) {
         "Content-Type": "application/json",
       },
       withCredentials: true,
-      data: localStorage.getItem("employeeDashboardTimer") ,
+      data: localStorage.getItem("employeeDashboardTimer"),
     };
 
     const response = await axios.post(
-      "http://localhost:5200/api/v1/user/logout",
-      config,
+      "https://emplyeemanagement-nvmn.onrender.com/api/v1/user/logout",
+      config
     );
 
     console.log(response);
@@ -76,7 +76,7 @@ function Navbar({ userType, setUserType }) {
     };
 
     const response = await axios.post(
-      "http://localhost:5200/api/v1/admin/logout",
+      "https://emplyeemanagement-nvmn.onrender.com/api/v1/admin/logout",
       config
     );
     localStorage.removeItem("admin");

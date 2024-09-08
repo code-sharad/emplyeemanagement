@@ -21,7 +21,7 @@
 //     };
 
 //     const response = await axios.post(
-//       "http://localhost:5200/api/v1/user/dailyReport",
+//       "https://emplyeemanagement-nvmn.onrender.com/api/v1/user/dailyReport",
 //       body,
 //       config
 //     );
@@ -70,23 +70,6 @@
 
 // export default EmpDailyReport;
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 import { useState } from "react";
 import { toast, Toaster } from "sonner";
 import axios from "axios";
@@ -115,7 +98,7 @@ function EmpDailyReport() {
 
     try {
       const response = await axios.post(
-        "http://localhost:5200/api/v1/user/dailyReport",
+        "https://emplyeemanagement-nvmn.onrender.com/api/v1/user/dailyReport",
         body,
         config
       );
@@ -127,7 +110,6 @@ function EmpDailyReport() {
       console.log(data);
 
       if (data.success) {
-        
         toast.success(data.message);
         setProjectName(""); // Clear the input after successful submission
         setWorkUrl(""); // Clear the input after successful submission
@@ -149,7 +131,9 @@ function EmpDailyReport() {
       <form onSubmit={handleSubmit}>
         {/* Project name input field */}
         <div className="mb-4">
-          <label className="block text-gray-700 font-semibold">Project Name:</label>
+          <label className="block text-gray-700 font-semibold">
+            Project Name:
+          </label>
           <input
             type="text"
             value={projectName}
@@ -162,7 +146,9 @@ function EmpDailyReport() {
 
         {/* Work URL input field */}
         <div className="mb-4">
-          <label className="block text-gray-700 font-semibold">Today's Work URL:</label>
+          <label className="block text-gray-700 font-semibold">
+            Today's Work URL:
+          </label>
           <input
             type="url"
             value={workUrl}
@@ -175,7 +161,9 @@ function EmpDailyReport() {
 
         {/* Report textarea */}
         <div className="mb-4">
-          <label className="block text-gray-700 font-semibold">Daily Report:</label>
+          <label className="block text-gray-700 font-semibold">
+            Daily Report:
+          </label>
           <textarea
             value={report}
             onChange={(e) => setReport(e.target.value)}
