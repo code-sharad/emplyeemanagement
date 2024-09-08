@@ -30,11 +30,7 @@ function AdmLogin({ loginType }) {
     };
 
     try {
-      const response = await axios.post(
-        "https://emplyeemanagement-nvmn.onrender.com/api/v1/admin/login",
-        body,
-        config
-      );
+      const response = await axios.post("/api/v1/admin/login", body, config);
 
       console.log(response);
 

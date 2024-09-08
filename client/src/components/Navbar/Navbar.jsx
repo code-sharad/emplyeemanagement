@@ -40,10 +40,7 @@ function Navbar({ userType, setUserType }) {
       data: localStorage.getItem("employeeDashboardTimer"),
     };
 
-    const response = await axios.post(
-      "https://emplyeemanagement-nvmn.onrender.com/api/v1/user/logout",
-      config
-    );
+    const response = await axios.post("/api/v1/user/logout", config);
 
     console.log(response);
 
@@ -75,10 +72,7 @@ function Navbar({ userType, setUserType }) {
       withCredentials: true,
     };
 
-    const response = await axios.post(
-      "https://emplyeemanagement-nvmn.onrender.com/api/v1/admin/logout",
-      config
-    );
+    const response = await axios.post("/api/v1/admin/logout", config);
     localStorage.removeItem("admin");
     document.cookie =
       "admintoken=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";

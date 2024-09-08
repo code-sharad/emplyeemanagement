@@ -37,7 +37,7 @@ function SignUp({ setLoginType }) {
     };
 
     const response = await axios.post(
-      "https://emplyeemanagement-nvmn.onrender.com/api/v1/admin/registerAdmin",
+      "/api/v1/admin/registerAdmin",
       body,
       config
     );

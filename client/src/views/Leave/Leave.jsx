@@ -37,7 +37,7 @@ function Leave() {
     };
 
     const response = await axios.post(
-      "https://emplyeemanagement-nvmn.onrender.com/api/v1/user/leaveApplication",
+      "/api/v1/user/leaveApplication",
       data,
       config
     );

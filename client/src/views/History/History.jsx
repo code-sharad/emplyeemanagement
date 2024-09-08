@@ -10,10 +10,7 @@ function History() {
       },
       withCredentials: true,
     };
-    const response = await axios.get(
-      "https://emplyeemanagement-nvmn.onrender.com/api/v1/admin/getAllLeaves",
-      config
-    );
+    const response = await axios.get("/api/v1/admin/getAllLeaves", config);
     console.log(response.data.data);
     setAllLeaves(response.data.data);
   };

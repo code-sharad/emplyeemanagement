@@ -65,18 +65,15 @@ function PhotoCapture() {
       const formData = new FormData();
       formData.append("photo", photoBlob, "photo.jpg");
 
-      const response = await fetch(
-        "https://emplyeemanagement-nvmn.onrender.com/api/v1/user/sendSnapshot",
-        {
-          method: "POST",
-          body: formData,
+      const response = await fetch("/api/v1/user/sendSnapshot", {
+        method: "POST",
+        body: formData,
 
-          // Send cookies with the request
-          credentials: "include",
+        // Send cookies with the request
+        credentials: "include",
 
-          withCredentials: true,
-        }
-      );
+        withCredentials: true,
+      });
 
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);

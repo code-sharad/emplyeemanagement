@@ -34,10 +34,7 @@ function Admin() {
     };
 
     try {
-      const response = await axios(
-        "https://emplyeemanagement-nvmn.onrender.com/api/v1/admin/getUsers",
-        config
-      );
+      const response = await axios("/api/v1/admin/getUsers", config);
 
       const data = response.data;
 
@@ -71,7 +68,7 @@ function Admin() {
 
     try {
       const response = await axios.get(
-        "https://emplyeemanagement-nvmn.onrender.com/api/v1/admin/getLeaveEmployee",
+        "/api/v1/admin/getLeaveEmployee",
         config
       );
 

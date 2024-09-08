@@ -94,7 +94,7 @@ export default function Calendar() {
         withCredentials: true,
       };
       const response = await axios.get(
-        "https://emplyeemanagement-nvmn.onrender.com/api/v1/admin/getLeaveEmployee",
+        "/api/v1/admin/getLeaveEmployee",
         config
       );
       console.log(response.data.data.at(-1));

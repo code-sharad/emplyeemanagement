@@ -21,7 +21,7 @@
 //     };
 
 //     const response = await axios.post(
-//       "https://emplyeemanagement-nvmn.onrender.com/api/v1/user/dailyReport",
+//       "/api/v1/user/dailyReport",
 //       body,
 //       config
 //     );
@@ -98,7 +98,7 @@ function EmpDailyReport() {
 
     try {
       const response = await axios.post(
-        "https://emplyeemanagement-nvmn.onrender.com/api/v1/user/dailyReport",
+        "/api/v1/user/dailyReport",
         body,
         config
       );

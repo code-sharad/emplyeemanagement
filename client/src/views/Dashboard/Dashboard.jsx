@@ -50,12 +50,10 @@ export function EmployeeDashboard() {
   // Start or resume timer when the component mounts or activeTab changes to 'profile'
   useEffect(() => {
     // const storedTimer = localStorage.getItem("employeeDashboardTimer");
-    const storedTimer = axios
-      .get("https://emplyeemanagement-nvmn.onrender.com/api/v1/user/status")
-      .then((res) => {
-        console.log("status", res.data);
-        setTimer(res.data.data[0].remainingTime);
-      });
+    const storedTimer = axios.get("/api/v1/user/status").then((res) => {
+      console.log("status", res.data);
+      setTimer(res.data.data[0].remainingTime);
+    });
     if (storedTimer) {
       setTimer(parseInt(storedTimer, 10));
     }
@@ -86,9 +84,7 @@ export function EmployeeDashboard() {
 
   const fetchAnnouncements = async () => {
     try {
-      const response = await axios.post(
-        "https://emplyeemanagement-nvmn.onrender.com/api/v1/admin/getAnnouncements"
-      );
+      const response = await axios.post("/api/v1/admin/getAnnouncements");
       console.log("Fetched Announcements", response.data);
 
       if (response.data.success) {
@@ -113,10 +109,7 @@ export function EmployeeDashboard() {
     };
 
     try {
-      const response = await axios.get(
-        "https://emplyeemanagement-nvmn.onrender.com/api/v1/user/getUserProfile",
-        config
-      );
+      const response = await axios.get("/api/v1/user/getUserProfile", config);
       const data = response.data;
       console.log("noticeeeeeeee", data);
       if (data.success) {

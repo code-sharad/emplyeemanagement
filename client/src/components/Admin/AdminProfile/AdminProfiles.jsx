@@ -20,10 +20,7 @@ function AdminProfiles() {
       withCredentials: true,
     };
 
-    const response = await axios.get(
-      "https://emplyeemanagement-nvmn.onrender.com/api/v1/admin/getAdminProfile",
-      config
-    );
+    const response = await axios.get("/api/v1/admin/getAdminProfile", config);
 
     const data = response.data.data;
 

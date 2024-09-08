@@ -28,11 +28,7 @@ function EmployeeDetails({ details, empRef }) {
 
       console.log("messssssssssssssssssssssss", message, email);
 
-      const response = await axios.post(
-        "https://emplyeemanagement-nvmn.onrender.com/api/v1/admin/sendNotice",
-        body,
-        config
-      );
+      const response = await axios.post("/v1/admin/sendNotice", body, config);
 
       if (response.data.success) {
         toast.success("Message sent successfully");
@@ -54,7 +50,7 @@ function EmployeeDetails({ details, empRef }) {
   useEffect(() => {
     console.log("Employee details: ", details);
 
-    const url = `https://emplyeemanagement-nvmn.onrender.com/api/v1/admin/getSnapshot`;
+    const url = `/api/v1/admin/getSnapshot`;
 
     axios
       .post(

@@ -6,7 +6,7 @@ import "./index.css";
 // this code is the localhost url
 import axios from "axios";
 import { ThemeProvider } from "@emotion/react";
-axios.defaults.baseURL = "https://emplyeemanagement-nvmn.onrender.com/api/v1/";
+axios.defaults.baseURL = "/api/v1/";
 axios.defaults.withCredentials = true; // for gaingin access-control-allow-credentials
 
 ReactDOM.createRoot(document.getElementById("root")).render(

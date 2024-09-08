@@ -25,7 +25,7 @@ function Announcement() {
 
     try {
       const response = await axios.post(
-        "https://emplyeemanagement-nvmn.onrender.com/api/v1/admin/createAnnouncement",
+        "/api/v1/admin/createAnnouncement",
         body,
         {
           headers: {
@@ -60,9 +60,7 @@ function Announcement() {
 
   const fetchAnnouncements = async () => {
     try {
-      const response = await axios.post(
-        "https://emplyeemanagement-nvmn.onrender.com/api/v1/admin/getAnnouncements"
-      );
+      const response = await axios.post("/api/v1/admin/getAnnouncements");
 
       console.log("Fetched Announcements:", response.data);
       console.log("Fetched Announcements => ", response.data.data);

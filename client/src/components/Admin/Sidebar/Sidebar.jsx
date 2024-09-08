@@ -28,10 +28,7 @@ function Sidebar({ activeBox, setActiveBox, notifactionCount }) {
   };
 
   const fetchleave = async () => {
-    const response = await axios.get(
-      "https://emplyeemanagement-nvmn.onrender.com/api/v1/admin/getLeaveEmployee",
-      config
-    );
+    const response = await axios.get("/api/v1/admin/getLeaveEmployee", config);
     return response.data;
   };
   useEffect(() => {

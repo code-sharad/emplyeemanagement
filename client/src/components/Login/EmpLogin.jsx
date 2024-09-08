@@ -27,11 +27,7 @@ function EmpLogin({ setUserType }) {
     };
 
     try {
-      const response = await axios.post(
-        "https://emplyeemanagement-nvmn.onrender.com/api/v1/user/login",
-        body,
-        config
-      );
+      const response = await axios.post("/api/v1/user/login", body, config);
 
       console.log(response);
       console.log(response.data);

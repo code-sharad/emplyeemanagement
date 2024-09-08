@@ -23,10 +23,7 @@ const Notifications = () => {
       withCredentials: true,
     };
 
-    const response = await axios.get(
-      "https://emplyeemanagement-nvmn.onrender.com/api/v1/admin/getLeaveEmployee",
-      config
-    );
+    const response = await axios.get("/api/v1/admin/getLeaveEmployee", config);
 
     console.log(response);
 
@@ -64,7 +61,7 @@ const Notifications = () => {
     };
 
     const response = await axios.post(
-      "https://emplyeemanagement-nvmn.onrender.com/api/v1/admin/approveLeave",
+      "/api/v1/admin/approveLeave",
       body,
       config
     );
@@ -89,7 +86,7 @@ const Notifications = () => {
     };
 
     const response = await axios.post(
-      "https://emplyeemanagement-nvmn.onrender.com/api/v1/admin/approveLeave",
+      "/api/v1/admin/approveLeave",
       body,
       config
     );

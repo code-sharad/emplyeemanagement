@@ -26,10 +26,7 @@ const DailyReport = () => {
       withCredentials: true,
     };
 
-    const response = await axios.get(
-      "https://emplyeemanagement-nvmn.onrender.com/api/v1/admin/getDailyReport",
-      config
-    );
+    const response = await axios.get("/api/v1/admin/getDailyReport", config);
 
     console.log(response);
 

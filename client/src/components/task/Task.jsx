@@ -43,11 +43,7 @@ export const AddTask = ({ setTasks, tasks, dialogRef }) => {
       description: task.description,
     };
 
-    const response = await axios.post(
-      "https://emplyeemanagement-nvmn.onrender.com/api/v1/user/addTask",
-      body,
-      config
-    );
+    const response = await axios.post("/api/v1/user/addTask", body, config);
 
     console.log(response);
     const data = response.data;

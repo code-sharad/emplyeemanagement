@@ -19,10 +19,7 @@ function Manage() {
       withCredentials: true,
     };
 
-    const response = await axios.get(
-      "https://emplyeemanagement-nvmn.onrender.com/api/v1/admin/getUsers",
-      config
-    );
+    const response = await axios.get("/api/v1/admin/getUsers", config);
     const data = response.data.data;
     setDetail(data);
   };
@@ -94,7 +91,7 @@ function ShowTableData({ DataObject }) {
 
     try {
       const response = await axios.delete(
-        "https://emplyeemanagement-nvmn.onrender.com/api/v1/admin/deleteUser",
+        "/api/v1/admin/deleteUser",
         { data: body },
         config
       );

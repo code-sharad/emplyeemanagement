@@ -25,10 +25,7 @@ function EmpProfile() {
     };
 
     try {
-      const response = await axios.get(
-        "https://emplyeemanagement-nvmn.onrender.com/api/v1/user/getUserProfile",
-        config
-      );
+      const response = await axios.get("/api/v1/user/getUserProfile", config);
       const data = response.data;
       console.log("BIO data", data.data);
       if (data.success) {
@@ -72,7 +69,7 @@ function EmpProfile() {
 
     try {
       const response = await axios.post(
-        "https://emplyeemanagement-nvmn.onrender.com/api/v1/user/updateProfile",
+        "/api/v1/user/updateProfile",
         formData,
         config
       );
@@ -317,7 +314,7 @@ export default EmpProfile;
 //     };
 
 //     try {
-//       const response = await axios.get("https://emplyeemanagement-nvmn.onrender.com/api/v1/user/getUserProfile", config);
+//       const response = await axios.get("/api/v1/user/getUserProfile", config);
 //       const data = response.data;
 
 //       if (data.success) {
@@ -360,7 +357,7 @@ export default EmpProfile;
 //     formData.append("bio", employee.bio);
 
 //     try {
-//       const response = await axios.post("https://emplyeemanagement-nvmn.onrender.com/api/v1/user/updateProfile", formData, config);
+//       const response = await axios.post("/api/v1/user/updateProfile", formData, config);
 //       const data = response.data;
 
 //       if (data.success) {

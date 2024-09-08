@@ -38,7 +38,7 @@ function Register() {
 
     try {
       const response = await axios.post(
-        "https://emplyeemanagement-nvmn.onrender.com/api/v1/admin/registerUser",
+        "/api/v1/admin/registerUser",
         body,
         config
       );
