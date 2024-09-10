@@ -14,7 +14,7 @@ const isAdminLoggedIn = asyncHandler(async (req, res, next) => {
   if (!adminToken) {
     return res
       .status(200)
-      .redirect("emp10.vercel.app/")
+      .redirect(process.env.CLIENT_DOMAIN)
       .json(new ApiResponse(400, "admin is not login in the server"));
   }
 

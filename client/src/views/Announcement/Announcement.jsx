@@ -84,7 +84,7 @@ function Announcement() {
   }, []);
 
   return (
-    <div className="flex dark dark:bg-black dark:text-white flex-col items-center justify-center min-w-max max-w-full rounded-2xl bg-slate-100 min-h-screen">
+    <div className="flex  dark:bg-black dark:text-white flex-col items-center justify-center min-w-max max-w-full rounded-2xl bg-slate-100 min-h-screen">
       <div className="dark:bg-black dark:text-white bg-gray-300 shadow-md p-4 min-w-[44rem] rounded-lg m-10  max-w-full">
         <h2 className=" dark:text-white  text-2xl font-bold mb-4 text-gray-800">
           Declare A Announcement
@@ -122,7 +122,7 @@ function Announcement() {
         Recent Announcements
       </h2>
 
-      <div className="mb-32  dark:bg-black dark:text-white shadow-lg shadow-gray-400 w-full max-w-[60rem] overflow-scroll h-[40rem] ">
+      <div className="mb-32 rounded-2xl  dark:bg-black dark:text-white shadow-lg shadow-gray-400 w-full max-w-[60rem] overflow-scroll h-[40rem] ">
         <ul className="space-y-4  ">
           {announcements.map((announce, index) => {
             return (
@@ -132,7 +132,7 @@ function Announcement() {
               >
                 <li className="p-4 bg-gray-200  text-black ">
                   {" "}
-                  {announce.createdAt}{" "}
+                  {convertToSimpleDate(announce.createdAt)}{" "}
                 </li>
                 <li className="p-4 bg-gray-100  text-black  ">
                   {" "}

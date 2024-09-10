@@ -16,7 +16,7 @@ app.use(express.urlencoded({ extended: true }));
 // enable cross origin requests
 app.use(
   cors({
-    origin: ["https://emp10.vercel.app", "http://localhost:5173"],
+    origin: "http://localhost:5173",
     credentials: true,
   })
 );
